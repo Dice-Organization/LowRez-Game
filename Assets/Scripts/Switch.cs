@@ -44,6 +44,8 @@ public class Switch : MonoBehaviour
     {
         _form1.GetComponent<Movement_Controll>().enabled = !_form1.GetComponent<Movement_Controll>().enabled;
         _form2.GetComponent<Movement_Controll>().enabled = !_form2.GetComponent<Movement_Controll>().enabled;
+        _form1.GetComponent<Interact>().enabled = !_form1.GetComponent<Interact>().enabled;
+        _form2.GetComponent<Interact>().enabled = !_form2.GetComponent<Interact>().enabled;
         _virtualCamera1.enabled = !_virtualCamera1.enabled;
         _virtualCamera2.enabled = !_virtualCamera2.enabled;
         _canSwap = false;
