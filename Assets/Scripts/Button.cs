@@ -9,10 +9,12 @@ public class Button : MonoBehaviour
     private bool _isPressed;
     private bool _canInteract;
     private Interact _playerInteract;
+    private Animator _animator;
 
     private void Awake() 
     {
         _playerInteract = LinkedPlayerForm.GetComponent<Interact>();
+        _animator = GetComponent<Animator>();
         
 
         _playerInteract.PlayerInteract += OpenDoor;
@@ -28,6 +30,8 @@ public class Button : MonoBehaviour
         LinkedDoor.SetActive(false);
 
         _isPressed = true;
+        _canInteract = false;
+        _animator.SetTrigger("IsPressed");
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -44,5 +48,9 @@ public class Button : MonoBehaviour
         {
             _canInteract = false;
         } 
+    }
+    private void Update() 
+    {
+        _animator.SetBool("IsInRange",_canInteract);
     }
 }

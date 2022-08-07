@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 243317296277923195}
   - component: {fileID: 4285777832594550846}
   - component: {fileID: 3394509859998306163}
+  - component: {fileID: 6078742968498929914}
   m_Layer: 0
   m_Name: Red Button
   m_TagString: Untagged
@@ -116,3 +117,23 @@ CapsuleCollider2D:
   m_Offset: {x: 1, y: 0}
   m_Size: {x: 1.3, y: 3}
   m_Direction: 0
+--- !u!95 &6078742968498929914
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6653340675112541431}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a7d5c3a5483f4a74b93b5ba316654efe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
