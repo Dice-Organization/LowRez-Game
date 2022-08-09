@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c76b07e2fd05054784d05f7e38fd1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LinkedDoor: {fileID: 0}
-  LinkedPlayerForm: {fileID: 0}
+  LinkedDoors: []
+  LinkedPlayerForm: {fileID: 6036326950850163050, guid: 6d2b158bd74f1e94f9eb0cea53355adc, type: 3}
 --- !u!70 &3674019356236117250
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -3,44 +3,71 @@ using UnityEngine.InputSystem;
 using Cinemachine;
 using System;
 
-public class Switch : MonoBehaviour
+public class FormControll : MonoBehaviour
 {
     private PlayerActions _playerInput;
 
+    [SerializeField]
     private GameObject _form1;
+    [SerializeField]
     private GameObject _form2;
     private CinemachineVirtualCamera _virtualCamera1;
     private CinemachineVirtualCamera _virtualCamera2;
     private bool _canSwap;
+    private bool _canSwitch;
 
     private void Awake() 
     {
         _playerInput = new();
 
+        _playerInput.PlayerInput.Switch.started += OnSwitch;
+        _playerInput.PlayerInput.Switch.canceled += OnSwitch;
         _playerInput.PlayerInput.Swap.started += OnSwap;
         _playerInput.PlayerInput.Swap.canceled += OnSwap;
          
-        _form1 = GameObject.FindGameObjectWithTag("Form 1");
-        _form2 = GameObject.FindGameObjectWithTag("Form 2");    
-        _virtualCamera1 = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
-        _virtualCamera2 = GameObject.Find("CM vcam2").GetComponent<CinemachineVirtualCamera>();
+        _virtualCamera1 = _form1.GetComponentInChildren<CinemachineVirtualCamera>(); 
+        _virtualCamera2 = _form2.GetComponentInChildren<CinemachineVirtualCamera>();
 
     }
 
     private void OnSwap(InputAction.CallbackContext context)
     {
         _canSwap = context.ReadValueAsButton();
+
+    }
+
+    private void OnSwitch(InputAction.CallbackContext context)
+    {
+        _canSwitch = context.ReadValueAsButton();
     }
 
     private void Update() 
     {
+        
+        if(_canSwitch)
+            Switch();
         if(_canSwap)
-        {
             Swap();
-        }
+        
     }
 
     private void Swap()
+    {
+        Vector2 form1Position = _form1.transform.position;
+        Vector2 form2Position = _form2.transform.position; 
+        
+        _form1.transform.position = form2Position;
+        _form2.transform.position = form1Position;
+        _canSwap = false;
+    }
+
+    private void Switch()
+    {
+        DisableForms();
+        _canSwitch = false;
+    }
+
+    private void DisableForms()
     {
         _form1.GetComponent<Movement_Controll>().enabled = !_form1.GetComponent<Movement_Controll>().enabled;
         _form2.GetComponent<Movement_Controll>().enabled = !_form2.GetComponent<Movement_Controll>().enabled;
@@ -48,7 +75,6 @@ public class Switch : MonoBehaviour
         _form2.GetComponent<Interact>().enabled = !_form2.GetComponent<Interact>().enabled;
         _virtualCamera1.enabled = !_virtualCamera1.enabled;
         _virtualCamera2.enabled = !_virtualCamera2.enabled;
-        _canSwap = false;
     }
 
     private void OnEnable()

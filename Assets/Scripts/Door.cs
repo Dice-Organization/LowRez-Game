@@ -14,6 +14,14 @@ public class Door : MonoBehaviour
         GetCollider2D().enabled = false;
     }
 
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        if(other.tag != LinkedPlayer.tag)
+            return;
+
+        GetCollider2D().enabled = true;    
+    }
+
     private Collider2D GetCollider2D()
     {
         Collider2D[] colliders = gameObject.GetComponents<Collider2D>();

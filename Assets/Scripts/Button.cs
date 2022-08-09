@@ -1,9 +1,10 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    public GameObject LinkedDoor;
+    public List<GameObject> LinkedDoors;
     public  GameObject LinkedPlayerForm;
 
     private bool _isPressed;
@@ -26,8 +27,10 @@ public class Button : MonoBehaviour
         if(_isPressed || !_canInteract)
             return;
 
-      
-        LinkedDoor.SetActive(false);
+         foreach (GameObject linkedDoor in LinkedDoors)
+        {
+            linkedDoor.SetActive(false);
+        }
 
         _isPressed = true;
         _canInteract = false;
