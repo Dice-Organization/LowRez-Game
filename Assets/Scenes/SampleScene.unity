@@ -1023,6 +1023,10 @@ PrefabInstance:
       propertyPath: LinkedDoors.Array.data[3]
       value: 
       objectReference: {fileID: 1022533973}
+    - target: {fileID: 7217656318430509420, guid: 81fba6a16bf7a7641a5a0a3538058600, type: 3}
+      propertyPath: LinkedDoors.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81fba6a16bf7a7641a5a0a3538058600, type: 3}
 --- !u!4 &761490886 stripped
@@ -5427,6 +5431,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 264498649}
     m_Modifications:
+    - target: {fileID: 4419005217275616398, guid: 6d2b158bd74f1e94f9eb0cea53355adc, type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 2004587005}
+    - target: {fileID: 4419005217275616398, guid: 6d2b158bd74f1e94f9eb0cea53355adc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419005217275616398, guid: 6d2b158bd74f1e94f9eb0cea53355adc, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 2.1331522
+      objectReference: {fileID: 0}
     - target: {fileID: 6036326950850163050, guid: 6d2b158bd74f1e94f9eb0cea53355adc, type: 3}
       propertyPath: m_Name
       value: Form  Blue
@@ -5484,6 +5500,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 264498649}
     m_Modifications:
+    - target: {fileID: 1599809372519686099, guid: 0e21b46113ed0dc439254c8e1592ac07, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599809372519686099, guid: 0e21b46113ed0dc439254c8e1592ac07, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 2.1331522
+      objectReference: {fileID: 0}
     - target: {fileID: 7680752961488823774, guid: 0e21b46113ed0dc439254c8e1592ac07, type: 3}
       propertyPath: m_RootOrder
       value: 0
