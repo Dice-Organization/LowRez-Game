@@ -42,7 +42,7 @@ public class Button : MonoBehaviour
             linkedDoor.SetActive(false);
         }
 
-
+        StartCoroutine(ReturnCamera());
         _isPressed = true;
         _canInteract = false;
 
@@ -63,7 +63,6 @@ public class Button : MonoBehaviour
        if(other.tag == LinkedPlayerForm.tag)
         {
             _canInteract = false;
-            ReturnCamera();
         } 
     }
     private void Update() 
@@ -74,8 +73,9 @@ public class Button : MonoBehaviour
         
     }
 
-    private void ReturnCamera()
+    private IEnumerator ReturnCamera()
     {
+        yield return new WaitForSeconds(1);
         _activeCamera.Follow = LinkedPlayerForm.transform;
     }
 }
