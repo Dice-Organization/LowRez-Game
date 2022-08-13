@@ -36,6 +36,7 @@ public class Button : MonoBehaviour
         if(_isPressed || !_canInteract)
             return;
 
+        SoundEffects.Instance.Audio.PlayOneShot(SoundEffects.Instance._doorOpenClip);
          foreach (GameObject linkedDoor in LinkedDoors)
         {            
             _activeCamera.Follow = linkedDoor.transform;

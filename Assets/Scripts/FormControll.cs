@@ -53,11 +53,13 @@ public class FormControll : MonoBehaviour
 
     private void Swap()
     {
+        SoundEffects.Instance.Audio.PlayOneShot(SoundEffects.Instance._swapClip);
         Vector2 form1Position = _form1.transform.position;
         Vector2 form2Position = _form2.transform.position; 
         
         _form1.transform.position = form2Position;
         _form2.transform.position = form1Position;
+
         _canSwap = false;
     }
 
@@ -69,6 +71,7 @@ public class FormControll : MonoBehaviour
 
     private void DisableForms()
     {
+        SoundEffects.Instance.Audio.PlayOneShot(SoundEffects.Instance._switchClip);
         _form1.GetComponent<Movement_Controll>().enabled = !_form1.GetComponent<Movement_Controll>().enabled;
         _form2.GetComponent<Movement_Controll>().enabled = !_form2.GetComponent<Movement_Controll>().enabled;
         _form1.GetComponent<Interact>().enabled = !_form1.GetComponent<Interact>().enabled;
