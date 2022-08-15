@@ -10,13 +10,11 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag=="Form 1")
+        if(collision.tag==form.tag)
         {
+            SoundEffects.Instance.Audio.PlayOneShot(SoundEffects.Instance._teleportClip);
             form.transform.position = new Vector2(portal.position.x + offsetx, portal.position.y + offsety);
         }
-        if(collision.tag=="Form 2")
-        {
-            form.transform.position = new Vector2(portal.position.x + offsetx, portal.position.y + offsety);
-        }
+        
     }
 }

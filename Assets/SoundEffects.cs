@@ -11,6 +11,7 @@ public class SoundEffects : MonoBehaviour
     public AudioClip _teleportClip;
     public AudioClip _blendClip;
     public AudioClip _doorOpenClip;
+    public AudioClip MenuClip;
     private void Awake() 
     {
         if(Instance == null)

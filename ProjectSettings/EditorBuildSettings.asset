@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: 65e2fda019b01e54eac2cb4852cec612
   - enabled: 1
-    path: Assets/Scenes/Level_fa.unity
-    guid: afc5392258131f14084a8289929c80db
+    path: Assets/Scenes/Level1.unity
+    guid: 6ef61541d0a01174ea251c3983a2f4c3
+  - enabled: 1
+    path: Assets/Scenes/Level2 - Portals.unity
+    guid: 41be8d2266b9b0a428d3c72a6e1b0593
   m_configObjects: {}

@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
             AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
             while (!loadingOperation.isDone)
             {   
-                loadedTime += Time.deltaTime;
+                
                 yield return null;
             }
         }

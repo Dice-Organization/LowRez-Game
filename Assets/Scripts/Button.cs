@@ -9,7 +9,6 @@ public class Button : MonoBehaviour
 {
     public List<GameObject> LinkedDoors;
     public  GameObject LinkedPlayerForm;
-    public CinemachineTargetGroup TargetGroup;
 
     private bool _isPressed;
     private bool _canInteract;
