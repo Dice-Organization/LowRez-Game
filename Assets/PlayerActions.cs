@@ -37,9 +37,27 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Swap"",
+                    ""name"": ""Switch"",
                     ""type"": ""Button"",
                     ""id"": ""7cf42560-b31b-4894-bcfe-ef4c78c174ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""d950d93c-5830-41f2-8000-fe78433a99eb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Swap"",
+                    ""type"": ""Button"",
+                    ""id"": ""ec761ac7-d753-48b4-95c3-7e4ccfaa681a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -109,6 +127,28 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
+                    ""action"": ""Switch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9bce0e53-17f2-41e8-9821-a05b0a1f2c9d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6418b74a-ab20-436a-a7ef-400163d59d27"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Swap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -121,6 +161,8 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         // Player Input
         m_PlayerInput = asset.FindActionMap("Player Input", throwIfNotFound: true);
         m_PlayerInput_Movement = m_PlayerInput.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerInput_Switch = m_PlayerInput.FindAction("Switch", throwIfNotFound: true);
+        m_PlayerInput_Interact = m_PlayerInput.FindAction("Interact", throwIfNotFound: true);
         m_PlayerInput_Swap = m_PlayerInput.FindAction("Swap", throwIfNotFound: true);
     }
 
@@ -182,12 +224,16 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerInput;
     private IPlayerInputActions m_PlayerInputActionsCallbackInterface;
     private readonly InputAction m_PlayerInput_Movement;
+    private readonly InputAction m_PlayerInput_Switch;
+    private readonly InputAction m_PlayerInput_Interact;
     private readonly InputAction m_PlayerInput_Swap;
     public struct PlayerInputActions
     {
         private @PlayerActions m_Wrapper;
         public PlayerInputActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerInput_Movement;
+        public InputAction @Switch => m_Wrapper.m_PlayerInput_Switch;
+        public InputAction @Interact => m_Wrapper.m_PlayerInput_Interact;
         public InputAction @Swap => m_Wrapper.m_PlayerInput_Swap;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
@@ -201,6 +247,12 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnMovement;
+                @Switch.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnSwitch;
+                @Switch.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnSwitch;
+                @Switch.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnSwitch;
+                @Interact.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnInteract;
                 @Swap.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnSwap;
                 @Swap.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnSwap;
                 @Swap.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnSwap;
@@ -211,6 +263,12 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Switch.started += instance.OnSwitch;
+                @Switch.performed += instance.OnSwitch;
+                @Switch.canceled += instance.OnSwitch;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
                 @Swap.started += instance.OnSwap;
                 @Swap.performed += instance.OnSwap;
                 @Swap.canceled += instance.OnSwap;
@@ -221,6 +279,8 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     public interface IPlayerInputActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnSwitch(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnSwap(InputAction.CallbackContext context);
     }
 }

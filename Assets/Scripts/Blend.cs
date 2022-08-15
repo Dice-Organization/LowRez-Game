@@ -9,6 +9,7 @@ public class Blend : MonoBehaviour
 
     public void BlendObjects()
     {
+        // SoundEffects.Instance.Audio.PlayOneShot(SoundEffects.Instance._blendClip);
         Instantiate(BlendedPrefab,BlendedObjects[0].transform.position,BlendedObjects[0].transform.rotation);
         for (int i = 0; i < BlendedObjects.Count; i++)
         {
